@@ -1,0 +1,59 @@
+﻿/* css for QuizMockV10 
+    *colors are set so I can make sure the css is working
+    * remember to be careful with variations that use a lot of green/yellow orange/yellow.
+    * color blind have trouble with yellow most.  So if yellow is predominant in a background,
+    * and in a font color, it will make it hard to read... I need to look into it more.
+*/
+#constant {
+    color: red;
+}
+
+body
+{
+    background-color: lightgrey;
+}
+.line {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    border-bottom: solid 5px darkgrey;
+}
+button {
+    border-radius: 50%;
+    background-color: white;
+    border: solid 2px aquamarine;
+    font-size: large;
+    margin-left: auto;
+
+}
+
+ul, li {
+    list-style-type: none;
+    display: inline-block;
+}
+.Instructions{
+    display: inline;
+    height: 50vh;
+    width: 50vw;
+    color: indigo;
+    text-align: center;
+}
+#load_image{
+    display: none;
+}
+.results{
+    display: inline-block;
+    color:midnightblue;
+}
+.question_s{
+    display: inline-block;
+    font-size:large;
+    color:sienna;
+}
+.question{
+    display:inline;
+    font-size: 2em;
+    color: cornflowerblue;
+}
+
+
