@@ -1,6 +1,9 @@
 // JavaScript source code for QuizMockV10
 let testing_something; // for 'set_a_constant'() test
-let questions;
+//json file not in use. Not enough learned about it
+
+let data_file;
+var questions;
 let answer1;
 let correct;
 let response_list;
@@ -11,6 +14,8 @@ let answer_b;
 let answer_c;
 let answer_d;
 let results;
+let current_answer;
+let current_index;
 
 
 
@@ -24,19 +29,28 @@ function set_a_constant() {
 };
 
 function set_constants() {
-    // our list of questions
-    questions = [
-        "A boolean is:",
-    ];
+    
+  
     // I'm sure there's a cleaner/better way to store these.
+    //I'd like to get these all set in a json file
+    //Looks like you need something like Browserfly to use json files client side.
+    //list of questions
+    questions = ['what is a boolean?', 'What makes a parameter different from an arguement?'];
+    //answers to go in list also
     answer1 = {
         "a": "True",
         "b": "False",
         "c": "A value of True or False, but never both.",
         "d": "Something you add to soup."
     };
+    answer2 = {
+        "a": "A parameter keeps the chickens from escaping. Arguements make them angry.",
+        "b": "The context. A parameter is a placeholder, the arguement is the thing that occupies that place.",
+        "c": "They are exactly the same.",
+        "d": "about 5 kilos give or take.",
+    };
     //list of correct answers by index
-    correct = ["c"];
+    correct = ["c", "b"];
     //maybe add more responses for sillier questions or images
     response_list = [
         "Try again.",
@@ -44,7 +58,8 @@ function set_constants() {
     ];
 
     // as we add answers we can just pop them into this list/array
-    answer_list = [answer1];
+    answer_list = [answer1, answer2];
+    current_index = 0;
 
     // if we do only one question on the page, these elements don't ever need to change
     Quiz_question = document.getElementById("question");
@@ -55,28 +70,65 @@ function set_constants() {
     results = document.getElementById("results");
 };
 
+
+function check_answer(i, answer) {
+    // if the clicked item matches the place in list "a" == "a"
+    // else:  result == try again.
+    var valid = correct[i];
+    console.log("check answer:");
+    console.log("current_answer = "); console.log(current_answer);
+    if (answer == valid) {
+        results.style.display = 'inline';
+        results.innerHTML = 'Fantastic!';
+        //move on to next question  i = i+1 load_quiz(i)
+        current_index += 1;
+        if (current_index < questions.length) {
+            load_quiz(current_index);
+        }
+    }
+    else {
+        results.style.display = 'inline';
+        results.innerHTML = 'Try again.';
+    }
+}
+
 function load_quiz(i) {
     // load the constants defined above by index 
     // as we add more questions and answers we can increment through the different arrays/lists
-    console.log("activating load_quiz:");
+    //console.log("activating load_quiz:");
+    //results.style.display = 'none'; //can't see the fantastic after reload with this.
     Quiz_question.innerHTML = questions[i];
-    console.log("Quiz_question=");
-    console.log(Quiz_question);
+    //console.log("Quiz_question=");
+    //console.log(Quiz_question);
     let options = answer_list[i];
+    //console.log("options = ", options);
     answer_a.innerHTML = options.a;
     answer_b.innerHTML = options.b;
     answer_c.innerHTML = options.c;
     answer_d.innerHTML = options.d;
 }
 
+function set_current_answer() {
+    current_answer = this.id;
+    check_answer(current_index, current_answer);
+}
+
+
 function add_ears() {
     // add event listeners to answer_a, b, c, d elements.
     // user clicks one of the answers and recieves results.
+   // I was going to add event listener but not sure how to add the 'a b c d' or whatnot.....
+    let choices = document.getElementsByClassName('quiz_answers');
+    for (let i = 0; i < choices.length; i++) {
+        let element = choices[i];
+        //let answer = element.id;
+        
+        //console.log(answer);
+        element.addEventListener("click", set_current_answer);
+        
+    };
 };
 
-function check_answer(i) {
-    // if the clicked item matches the place in list "a" == "a"
-}
 
 //test our constants have been loaded
 function test_constants() {
@@ -96,10 +148,10 @@ function test_constants() {
 function start_quiz() {
     // set our constants now that page is loaded:
     set_constants();
+    add_ears();
+    
     // Need an event driver here instead of for loop
-    for (var i = 0; i < questions.length; i++) {
-        load_quiz(i);
-    };
+    load_quiz(current_index);
     //test *since button can only be clicked after screen load, these constants should exist (not null):
     //test_constants()
 };
