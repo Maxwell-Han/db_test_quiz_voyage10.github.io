@@ -16,6 +16,7 @@ let answer_d;
 let results;
 let current_answer;
 let current_index;
+let which_question;
 
 
 
@@ -60,6 +61,7 @@ function set_constants() {
     // as we add answers we can just pop them into this list/array
     answer_list = [answer1, answer2];
     current_index = 0;
+    which_question = document.getElementById('which_question');
 
     // if we do only one question on the page, these elements don't ever need to change
     Quiz_question = document.getElementById("question");
@@ -97,6 +99,10 @@ function load_quiz(i) {
     // as we add more questions and answers we can increment through the different arrays/lists
     //console.log("activating load_quiz:");
     //results.style.display = 'none'; //can't see the fantastic after reload with this.
+    var ques_num = i + 1;
+    var message = "Question number:  " + " " + ques_num;
+    which_question.innerHTML = message;
+    which_question.style.display = 'inline';
     Quiz_question.innerHTML = questions[i];
     //console.log("Quiz_question=");
     //console.log(Quiz_question);
