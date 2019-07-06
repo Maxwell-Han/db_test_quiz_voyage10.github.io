@@ -60,9 +60,13 @@ function retrieve_JSON(i) {
         
             var dict = data[i];
             console.log(dict);
-            json_question = dict.question_j;
-            correct = dict.correct_j;
-            json_answer = dict.answers_j;
+            var fetchedQuestion = dict.question_j;
+            json_question = fetchedQuestion;
+            var fetchedCorrect = dict.correct_j;
+            correct = fetchedCorrect;
+            var fetchedAnswer = dict.answers_j;
+            json_answer = fetchedAnswer;
+            
             
             
         })
