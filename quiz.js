@@ -57,13 +57,14 @@ function retrieve_JSON(i) {
             //               },
         
             var dict = data[i];
-            var question = dict.get('question');
-            var correct = dict.get('correct');
-            var answers_obj = dict.get('answers');
+            var question = dict.get(question_j);
+            var correct = dict.get(correct_j);
+            var answers_obj = dict.get(answers_j);
             return question, correct, answers_obj; 
         })
         .catch(err => {
             // Do something for an error here
+            console.log("unable to access JSON file");
         })
 }
 
