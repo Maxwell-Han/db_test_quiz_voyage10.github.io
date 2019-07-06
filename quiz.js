@@ -59,11 +59,12 @@ function retrieve_JSON(i) {
             //               },
         
             var dict = data[i];
+            console.log(dict);
             json_question = dict.get(question_j);
             correct = dict.get(correct_j);
             json_answer = dict.get(answers_j);
             //return question, correct, answers_obj; 
-            console.log(dict);
+            
         })
         .catch(err => {
             // Do something for an error here
