@@ -72,6 +72,19 @@ function retrieve_JSON(i) {
             var fetchedAnswer = dict.answers_j;
             //console.log(fetchedAnswer)
             json_answer = fetchedAnswer;
+            var ques_num = i + 1;
+            var message = "Question number:  " + " " + ques_num;
+            which_question.innerHTML = message;
+            which_question.style.display = 'inline';
+            Quiz_question.innerHTML = json_question;
+            //console.log("Quiz_question=");
+            //console.log(Quiz_question);
+            let options = json_answer;
+            //console.log("options = ", options);
+            answer_a.innerHTML = options.a;
+            answer_b.innerHTML = options.b;
+            answer_c.innerHTML = options.c;
+            answer_d.innerHTML = options.d;
             
             
             
@@ -80,9 +93,9 @@ function retrieve_JSON(i) {
             // Do something for an error here
             console.log("JSON file is not accessable or error in data assignment.")
         })
-}
+};
 
-function set_constants_from_json() {
+function setDOMconstants() {
     
 
     current_index = 0;
@@ -95,25 +108,10 @@ function set_constants_from_json() {
     answer_c = document.getElementById("answerC");
     answer_d = document.getElementById("answerD");
     results = document.getElementById("results");
-}
+};
 
-function load_quiz_from_json(i) {
-    retrieve_JSON(i);
-    
-    var ques_num = i + 1;
-    var message = "Question number:  " + " " + ques_num;
-    which_question.innerHTML = message;
-    which_question.style.display = 'inline';
-    Quiz_question.innerHTML = json_question;
-    //console.log("Quiz_question=");
-    //console.log(Quiz_question);
-    let options = json_answer;
-    //console.log("options = ", options);
-    answer_a.innerHTML = options.a;
-    answer_b.innerHTML = options.b;
-    answer_c.innerHTML = options.c;
-    answer_d.innerHTML = options.d;
-    
+function loadCurrentQuestion(i) {
+    retrieve_JSON(i);    
 };
 
 /*   
@@ -182,7 +180,7 @@ function check_answer(i, answer) {
         if (current_index < questions.length) {
             
             //load_quiz(current_index);
-            load_quiz_from_json(current_index);
+            loadCurrentQuestion(current_index);
         }
     }
     else {
@@ -218,7 +216,7 @@ function set_current_answer() {
 }
 
 
-function add_ears() {
+function addEventHandlersToButtons() {
     // add event listeners to answer_a, b, c, d elements.
     // user clicks one of the answers and recieves results.
    // I was going to add event listener but not sure how to add the 'a b c d' or whatnot.....
@@ -260,10 +258,12 @@ function test_constants() {
 
 function start_quiz() {
     // set our constants now that page is loaded:
-    //set_constants();
-    add_ears();
-    set_constants_from_json();
-    load_quiz_from_json(current_index);
+    addEventHandlersToButtons()
+    
+    //updatePageWithNewElements()
+    //set_constants();   
+    setDOMconstants();
+    loadCurrentQuestion(current_index);
     //  -----------In script *old way* -- load_quiz(i) 
     //load_quiz(current_index);
     //test *since button can only be clicked after screen load, these constants should exist (not null):
