@@ -61,6 +61,7 @@ function retrieve_JSON(i) {
             //               },
         
             var dict = data[i];
+            questions = dict; //for check answers-- needs length of array
             console.log(dict);
             var fetchedQuestion = dict.question_j;
             json_question = fetchedQuestion;
