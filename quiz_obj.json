@@ -1,8 +1,8 @@
 [
   {
-    "question": "What is a boolean?",
-    "correct": "c",
-    "answers":
+    "question_j": "What is a boolean?",
+    "correct_j": "c",
+    "answers_j":
     {
       "a": "True",
       "b": "False",
@@ -11,9 +11,9 @@
     }
   },
   {
-    "question": "What makes a parameter different from an arguement?",
-    "correct": "b",
-    "answers": 
+    "question_j": "What makes a parameter different from an arguement?",
+    "correct_j": "b",
+    "answers_j": 
     {
       "a": "A parameter keeps the chickens from escaping. Arguements make them angry.",
       "b": "The context. A parameter is a placeholder, the arguement is the thing that occupies that place.",

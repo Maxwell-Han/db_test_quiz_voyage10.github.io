@@ -32,13 +32,15 @@ function retrieve_JSON(i) {
         })
         .then(data => {
             // Work with JSON data here
+            // had to add a _j  at the end of my content
+            // because of variables declared above, these must be different
             //----------------------------------------//
             //          data format:                  
             // array:[
             // quiz content {
-            //               'question': 'string',   
-            //               'correct' : 'string',
-            //               'answers' : object{
+            //               'question_j': 'string',   
+            //               'correct_j' : 'string',
+            //               'answers_j' : object{
             //                           'a': 'string',
             //                           'b': 'string',
             //                           'c': 'string',
@@ -46,9 +48,9 @@ function retrieve_JSON(i) {
             //                           }
             //               },
             // next content (same as above)  {
-            //               'question': 'string',   
-            //               'correct' : 'string',
-            //               'answers' : object{
+            //               'question_j': 'string',   
+            //               'correct_j' : 'string',
+            //               'answers_j' : object{
             //                           'a': 'string',
             //                           'b': 'string',
             //                           'c': 'string',
@@ -61,10 +63,11 @@ function retrieve_JSON(i) {
             var correct = dict.get(correct_j);
             var answers_obj = dict.get(answers_j);
             return question, correct, answers_obj; 
+            console.log(dict);
         })
         .catch(err => {
             // Do something for an error here
-            console.log("unable to access JSON file");
+            console.log("JSON file is not accessable.")
         })
 }
 
