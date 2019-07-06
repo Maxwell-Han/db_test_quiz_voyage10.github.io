@@ -1,29 +1,27 @@
 // JavaScript source code for QuizMockV10
 let testing_something; // for 'set_a_constant'() test
-//json file not in use. Not enough learned about it
 
 //  Quiz elements to be written to DOM
-let data_file;
-var questions;
+
+var questions;  // used for length of JSON array
 var json_question;  // for JSON load
-let answer1;
 let json_answer;    // for JSON load
-let correct;        //either load -- unchanging
-let response_list;  //either load -- unchanging
-let answer_list;
+let correct;        // for JSON load
+
+
 // document elements
 let Quiz_question;
 let answer_a;
 let answer_b;
 let answer_c;
 let answer_d;
-// constants NOT from JSON, control items
+// constants NOT from JSON, control items 
 let results;
 let current_answer;
 let current_index;
 let which_question;
 
-//   added JSON data.  Old functions below.  
+//removed all old functions.  Json holds our data now.
 
 function retrieve_JSON(i) {
     
@@ -119,50 +117,6 @@ function loadCurrentQuestion(i) {
  *  to switch back to old set,  just change the load_quiz type in start_quiz()*bottom*
 */
 
-function set_constants() {
-    
-  
-    // I'm sure there's a cleaner/better way to store these.
-    //I'd like to get these all set in a json file
-    //Looks like you need something like Browserfly to use json files client side.
-    //list of questions
-    questions = ['what is a boolean?', 'What makes a parameter different from an arguement?'];
-    //answers to go in list also
-    answer1 = {
-        "a": "True",
-        "b": "False",
-        "c": "A value of True or False, but never both.",
-        "d": "Something you add to soup."
-    };
-    answer2 = {
-        "a": "A parameter keeps the chickens from escaping. Arguements make them angry.",
-        "b": "The context. A parameter is a placeholder, the arguement is the thing that occupies that place.",
-        "c": "They are exactly the same.",
-        "d": "about 5 kilos give or take.",
-    };
-    //list of correct answers by index
-    correct = ["c", "b"];
-    //maybe add more responses for sillier questions or images
-    response_list = [
-        "Try again.",
-        "Correct",
-    ];
-
-    // as we add answers we can just pop them into this list/array
-    answer_list = [answer1, answer2];
-    current_index = 0;
-    which_question = document.getElementById('which_question');
-
-    // if we do only one question on the page, these elements don't ever need to change
-    Quiz_question = document.getElementById("question");
-    answer_a = document.getElementById("answerA");
-    answer_b = document.getElementById("answerB");
-    answer_c = document.getElementById("answerC");
-    answer_d = document.getElementById("answerD");
-    results = document.getElementById("results");
-};
-
-
 function check_answer(i, answer) {
     // if the clicked item matches the place in list "a" == "a"
     // else:  result == try again.
@@ -190,30 +144,11 @@ function check_answer(i, answer) {
     }
 }
 
-function load_quiz(i) {
-    // load the constants defined above by index 
-    // as we add more questions and answers we can increment through the different arrays/lists
-    //console.log("activating load_quiz:");
-    //results.style.display = 'none'; //can't see the fantastic after reload with this.
-    var ques_num = i + 1;
-    var message = "Question number:  " + " " + ques_num;
-    which_question.innerHTML = message;
-    which_question.style.display = 'inline';
-    Quiz_question.innerHTML = questions[i];
-    //console.log("Quiz_question=");
-    //console.log(Quiz_question);
-    let options = answer_list[i];
-    //console.log("options = ", options);
-    answer_a.innerHTML = options.a;
-    answer_b.innerHTML = options.b;
-    answer_c.innerHTML = options.c;
-    answer_d.innerHTML = options.d;
-}
 
 function set_current_answer() {
     current_answer = this.id;
     check_answer(current_index, current_answer);
-}
+};
 
 
 function addEventHandlersToButtons() {
@@ -264,8 +199,7 @@ function start_quiz() {
     //set_constants();   
     setDOMconstants();
     loadCurrentQuestion(current_index);
-    //  -----------In script *old way* -- load_quiz(i) 
-    //load_quiz(current_index);
+   
     //test *since button can only be clicked after screen load, these constants should exist (not null):
     //test_constants()
 };
