@@ -26,7 +26,7 @@ let which_question;
 //   added JSON data.  Old functions below.  
 
 function retrieve_JSON(i) {
-    fetch('./quiz_obj.json')
+    fetch('quiz_obj.json')
         .then(response => {
             return response.json()
         })
