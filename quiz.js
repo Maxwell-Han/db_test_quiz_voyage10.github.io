@@ -26,6 +26,16 @@ let which_question;
 //   added JSON data.  Old functions below.  
 
 function retrieve_JSON(i) {
+    
+    which_question = document.getElementById('which_question');
+
+    // if we do only one question on the page, these elements don't ever need to change
+    Quiz_question = document.getElementById("question");
+    answer_a = document.getElementById("answerA");
+    answer_b = document.getElementById("answerB");
+    answer_c = document.getElementById("answerC");
+    answer_d = document.getElementById("answerD");
+    results = document.getElementById("results");
     return fetch('quiz_obj.json')
         .then(response => {
             return response.json()
@@ -61,9 +71,12 @@ function retrieve_JSON(i) {
             var dict = data[i];
             console.log(dict);
             var fetchedQuestion = dict.question_j;
+            console.log(fetchedQuestion);
             json_question = fetchedQuestion;
+            console.log(fetchedQuestion);
             var fetchedCorrect = dict.correct_j;
             correct = fetchedCorrect;
+            console.log(fetchedCorrect);
             var fetchedAnswer = dict.answers_j;
             json_answer = fetchedAnswer;
             
@@ -93,6 +106,7 @@ function set_constants_from_json() {
 
 function load_quiz_from_json(i) {
     retrieve_JSON(i);
+    /*
     var ques_num = i + 1;
     var message = "Question number:  " + " " + ques_num;
     which_question.innerHTML = message;
@@ -106,8 +120,8 @@ function load_quiz_from_json(i) {
     answer_b.innerHTML = options.b;
     answer_c.innerHTML = options.c;
     answer_d.innerHTML = options.d;
-
-}
+    */
+};
 
 /*   
  *   end JSON  functions.  
