@@ -177,7 +177,8 @@ function check_answer(i, answer) {
         //move on to next question  i = i+1 load_quiz(i)
         current_index += 1;
         if (current_index < questions.length) {
-            load_quiz(current_index);
+            //load_quiz(current_index);
+            load_quiz_from_json(i);
         }
     }
     else {
