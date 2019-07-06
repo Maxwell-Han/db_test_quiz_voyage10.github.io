@@ -175,10 +175,10 @@ function check_answer(i, answer) {
         results.style.display = 'inline';
         results.innerHTML = 'Fantastic!';
         //move on to next question  i = i+1 load_quiz(i)
-        current_index += 1;
         if (current_index < questions.length) {
+            current_index += 1;
             //load_quiz(current_index);
-            load_quiz_from_json(i);
+            load_quiz_from_json(current_index);
         }
     }
     else {
