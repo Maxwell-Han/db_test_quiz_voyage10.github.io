@@ -59,10 +59,10 @@ function retrieve_JSON(i) {
             //               },
         
             var dict = data[i];
-            var question = dict.get(question_j);
-            var correct = dict.get(correct_j);
-            var answers_obj = dict.get(answers_j);
-            return question, correct, answers_obj; 
+            json_question = dict.get(question_j);
+            correct = dict.get(correct_j);
+            json_answer = dict.get(answers_j);
+            //return question, correct, answers_obj; 
             console.log(dict);
         })
         .catch(err => {
@@ -87,7 +87,7 @@ function set_constants_from_json() {
 }
 
 function load_quiz_from_json(i) {
-    json_question, correct, json_answers = retrieve_JSON(i);
+    retrieve_JSON(i);
     var ques_num = i + 1;
     var message = "Question number:  " + " " + ques_num;
     which_question.innerHTML = message;
