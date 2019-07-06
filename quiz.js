@@ -242,8 +242,9 @@ function test_constants() {
 
 function start_quiz() {
     // set our constants now that page is loaded:
-    set_constants();
+    //set_constants();
     add_ears();
+    set_constants_from_json();
     load_quiz_from_json(current_index);
     //  -----------In script *old way* -- load_quiz(i) 
     //load_quiz(current_index);
