@@ -62,10 +62,10 @@ function retrieve_JSON(i) {
         
             var dict = data[i];
             questions = dict; //for check answers-- needs length of array
-            console.log(dict);
+            //console.log(dict);
             var fetchedQuestion = dict.question_j;
             json_question = fetchedQuestion;
-            //console.log(fetchedQuestion);
+            console.log(fetchedQuestion);
             var fetchedCorrect = dict.correct_j;
             correct = fetchedCorrect;
             //console.log(fetchedCorrect);
@@ -174,14 +174,18 @@ function check_answer(i, answer) {
     if (answer == valid) {
         results.style.display = 'inline';
         results.innerHTML = 'Fantastic!';
+        let previous_index = current_index;
+        current_index += 1;
+        
         //move on to next question  i = i+1 load_quiz(i)
         if (current_index < questions.length) {
-            current_index += 1;
+            
             //load_quiz(current_index);
             load_quiz_from_json(current_index);
         }
     }
     else {
+        current_index = previous_index;
         results.style.display = 'inline';
         results.innerHTML = 'Try again.';
     }
