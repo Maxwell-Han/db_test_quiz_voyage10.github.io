@@ -171,10 +171,10 @@ function check_answer(i, answer) {
     var valid = correct[i];
     console.log("check answer:");
     console.log("current_answer = "); console.log(current_answer);
+    let previous_index = current_index;
     if (answer == valid) {
         results.style.display = 'inline';
         results.innerHTML = 'Fantastic!';
-        let previous_index = current_index;
         current_index += 1;
         
         //move on to next question  i = i+1 load_quiz(i)
