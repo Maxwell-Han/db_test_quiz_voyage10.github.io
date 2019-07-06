@@ -168,7 +168,7 @@ function set_constants() {
 function check_answer(i, answer) {
     // if the clicked item matches the place in list "a" == "a"
     // else:  result == try again.
-    var valid = correct[i];
+    var valid = correct;
     console.log("current question:"); console.log(json_question);
     console.log("check answer:"); console.log(valid);
     console.log("current_answer = "); console.log(current_answer);
