@@ -95,7 +95,7 @@ function load_quiz_from_json(i) {
     Quiz_question.innerHTML = json_question;
     //console.log("Quiz_question=");
     //console.log(Quiz_question);
-    let options = json_answers;
+    let options = json_answer;
     //console.log("options = ", options);
     answer_a.innerHTML = options.a;
     answer_b.innerHTML = options.b;
