@@ -2,32 +2,108 @@
 let testing_something; // for 'set_a_constant'() test
 //json file not in use. Not enough learned about it
 
+//  Quiz elements to be written to DOM
 let data_file;
 var questions;
+var json_question;  // for JSON load
 let answer1;
-let correct;
-let response_list;
+let json_answer;    // for JSON load
+let correct;        //either load -- unchanging
+let response_list;  //either load -- unchanging
 let answer_list;
+// document elements
 let Quiz_question;
 let answer_a;
 let answer_b;
 let answer_c;
 let answer_d;
+// constants NOT from JSON, control items
 let results;
 let current_answer;
 let current_index;
 let which_question;
 
+//   added JSON data.  Old functions below.  
 
+function retrieve_JSON(i) {
+    fetch('quiz_obj.json')
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            // Work with JSON data here
+            //----------------------------------------//
+            //          data format:                  
+            // array:[
+            // quiz content {
+            //               'question': 'string',   
+            //               'correct' : 'string',
+            //               'answers' : object{
+            //                           'a': 'string',
+            //                           'b': 'string',
+            //                           'c': 'string',
+            //                           'd': 'string'
+            //                           }
+            //               },
+            // next content (same as above)  {
+            //               'question': 'string',   
+            //               'correct' : 'string',
+            //               'answers' : object{
+            //                           'a': 'string',
+            //                           'b': 'string',
+            //                           'c': 'string',
+            //                           'd': 'string'
+            //                           }
+            //               },
+        
+            var dict = data[i];
+            var question = dict.get('question');
+            var correct = dict.get('correct');
+            var answers_obj = dict.get('answers');
+            return question, correct, answers_obj; 
+        })
+        .catch(err => {
+            // Do something for an error here
+        })
+}
 
+function set_constants_from_json() {
+    
 
-function set_a_constant() {
-    testing_something = document.getElementById("constant");
-    console.log("id = constant");
-    console.log(testing_something);
-   //  Does not set color: testing_something.style.color = "green;";
-    document.getElementById("constant").style.color = 'green';
-};
+    current_index = 0;
+    which_question = document.getElementById('which_question');
+
+    // if we do only one question on the page, these elements don't ever need to change
+    Quiz_question = document.getElementById("question");
+    answer_a = document.getElementById("answerA");
+    answer_b = document.getElementById("answerB");
+    answer_c = document.getElementById("answerC");
+    answer_d = document.getElementById("answerD");
+    results = document.getElementById("results");
+}
+
+function load_quiz_from_json(i) {
+    json_question, correct, json_answers = retrieve_JSON(i);
+    var ques_num = i + 1;
+    var message = "Question number:  " + " " + ques_num;
+    which_question.innerHTML = message;
+    which_question.style.display = 'inline';
+    Quiz_question.innerHTML = json_question;
+    //console.log("Quiz_question=");
+    //console.log(Quiz_question);
+    let options = json_answers;
+    //console.log("options = ", options);
+    answer_a.innerHTML = options.a;
+    answer_b.innerHTML = options.b;
+    answer_c.innerHTML = options.c;
+    answer_d.innerHTML = options.d;
+
+}
+
+/*   
+ *   end JSON  functions.  
+ *  to switch back to old set,  just change the load_quiz type in start_quiz()*bottom*
+*/
 
 function set_constants() {
     
@@ -135,29 +211,38 @@ function add_ears() {
     };
 };
 
-
-//test our constants have been loaded
-function test_constants() {
-    //set_a_constant(); //html element for this is commented out in html file
-    //console.log("id=question");
-    //console.log(Quiz_question);
-    //console.log("id=answerA");
-    //console.log(answer_a);
-    //console.log("id=answerB");
-    //console.log(answer_b);
-    //console.log("id=answerC");
-    //console.log(answer_c);
-    //console.log("id=answerD");
-    //console.log(answer_D);
+/*   test functions: 
+* test our constants have been loaded
+ *
+function set_a_constant() {
+    testing_something = document.getElementById("constant");
+    console.log("id = constant");
+    console.log(testing_something);
+    document.getElementById("constant").style.color = 'green';
 };
+
+function test_constants() {
+    set_a_constant(); //html element for this is commented out in html file
+    console.log("id=question");
+    console.log(Quiz_question);
+    console.log("id=answerA");
+    console.log(answer_a);
+    console.log("id=answerB");
+    console.log(answer_b);
+    console.log("id=answerC");
+    console.log(answer_c);
+    console.log("id=answerD");
+    console.log(answer_D);
+};
+*/
 
 function start_quiz() {
     // set our constants now that page is loaded:
     set_constants();
     add_ears();
-    
-    // Need an event driver here instead of for loop
-    load_quiz(current_index);
+    load_quiz_from_json(current_index);
+    //  -----------In script *old way* -- load_quiz(i) 
+    //load_quiz(current_index);
     //test *since button can only be clicked after screen load, these constants should exist (not null):
     //test_constants()
 };

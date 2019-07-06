@@ -1,0 +1,26 @@
+[
+  {
+    "question": "What is a boolean?",
+    "correct": "c",
+    "answers":
+    {
+      "a": "True",
+      "b": "False",
+      "c": "A value of True or False, but never both.",
+      "d": "Something you add to soup."
+    }
+  },
+  {
+    "question": "What makes a parameter different from an arguement?",
+    "correct": "b",
+    "answers": 
+    {
+      "a": "A parameter keeps the chickens from escaping. Arguements make them angry.",
+      "b": "The context. A parameter is a placeholder, the arguement is the thing that occupies that place.",
+      "c": "They are exactly the same.",
+      "d": "about 5 kilos give or take."
+    }
+   
+  }
+]
+}
