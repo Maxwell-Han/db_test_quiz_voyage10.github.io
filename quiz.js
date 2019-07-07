@@ -30,25 +30,17 @@ let box_type;
 
 //removed all old functions.  Json holds our data now.
 
-function setQuizBoxType(multiple) {
-    if (multiple == true) {
-        quiz_box.style.display = 'inline-block';
-        true_false_box.style.display = 'none';
-    }
-    else {
-        quiz_box.style.display = 'none';
-        true_false_box.style.display = 'inline-block';
-    }
-};
 
 function retrieve_JSON(i) {
     
     
     return fetch('quiz_obj.json')
         .then(response => {
+            console.log("getting json response...")
             return response.json()
         })
         .then(data => {
+            console.log("Assigning data to constants")
             // Work with JSON data here
             // had to add a _j  at the end of my content
             // because of variables declared above, these must be different
@@ -96,8 +88,7 @@ function retrieve_JSON(i) {
             which_question.innerHTML = message;
             which_question.style.display = 'inline';
             Quiz_question.innerHTML = json_question;
-            //console.log("Quiz_question=");
-            console.log(Quiz_question);
+            //console.log("Quiz_question=")
             var fetchedBoxType = dict.box_type;
             box_type = fetchedBoxType;
             console.log(box_type);
@@ -147,6 +138,17 @@ function loadCurrentQuestion(i) {
     retrieve_JSON(i);    
 };
 
+
+function setQuizBoxType(multiple) {
+    if (multiple == true) {
+        quiz_box.style.display = 'inline-block';
+        true_false_box.style.display = 'none';
+    }
+    else {
+        quiz_box.style.display = 'none';
+        true_false_box.style.display = 'inline-block';
+    }
+};
 /*   
  *   end JSON  functions.  
  *  to switch back to old set,  just change the load_quiz type in start_quiz()*bottom*
