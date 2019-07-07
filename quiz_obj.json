@@ -10,7 +10,9 @@
       "c": "A value of True or False, but never both.",
       "d": "Something you add to soup."
     }
+    
   },
+  
   {
     "question_j": "What makes a parameter different from an arguement?",
     "correct_j": "b",
@@ -21,6 +23,7 @@
       "c": "They are exactly the same.",
       "d": "about 5 kilos give or take."
     }
-  },
+    
+  }
+  
 ]
-}
