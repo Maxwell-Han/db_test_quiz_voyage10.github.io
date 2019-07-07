@@ -133,6 +133,7 @@ function setDOMconstants() {
     answer_T = document.getElementById("True");  // needed?
     answer_F = document.getElementById("False");  // needed?
     results = document.getElementById("results");
+    start_button.style.display = 'none';
 };
 
 function loadCurrentQuestion(i) {
