@@ -11,8 +11,6 @@ let correct;        // for JSON load
 
 // document elements
 let Quiz_question;
-let quiz_box;
-let start_button;
 let answer_a;
 let answer_b;
 let answer_c;
@@ -22,8 +20,24 @@ let results;
 let current_answer;
 let current_index;
 let which_question;
+let quiz_box;
+let start_button;
+let true_false_box;
+let box_type;
+
 
 //removed all old functions.  Json holds our data now.
+
+function setQuizBoxType(multiple) {
+    if (multiple == true) {
+        quiz_box.style.display = 'inline-block';
+        true_false_box.style.display = 'none';
+    }
+    else {
+        quiz_box.style.display = 'none';
+        true_false_box.style.display = 'inline-block';
+    }
+};
 
 function retrieve_JSON(i) {
     
@@ -79,12 +93,20 @@ function retrieve_JSON(i) {
             Quiz_question.innerHTML = json_question;
             //console.log("Quiz_question=");
             //console.log(Quiz_question);
-            let options = json_answer;
-            //console.log("options = ", options);
-            answer_a.innerHTML = options.a;
-            answer_b.innerHTML = options.b;
-            answer_c.innerHTML = options.c;
-            answer_d.innerHTML = options.d;
+            var fetchedBoxType = dict.box_type;
+            box_type = fetchedBoxType;
+            if (box_type == 'multiple') {
+                setQuizBoxType(true);
+                let options = json_answer;
+                //console.log("options = ", options);
+                answer_a.innerHTML = options.a;
+                answer_b.innerHTML = options.b;
+                answer_c.innerHTML = options.c;
+                answer_d.innerHTML = options.d;
+            }
+            else {
+                setQuizBoxType(false);                
+            }
             
             
             
@@ -100,11 +122,6 @@ function setDOMconstants() {
 
     current_index = 0;
     which_question = document.getElementById('which_question');
-    quiz_box = document.getElementById("quiz_box");
-    start_button = document.getElementById("start_button");
-    start_button.style.display = 'none';
-    quiz_box.style.display = 'inline-block';
-    
 
     // if we do only one question on the page, these elements don't ever need to change
     Quiz_question = document.getElementById("question");
@@ -124,7 +141,7 @@ function loadCurrentQuestion(i) {
  *  to switch back to old set,  just change the load_quiz type in start_quiz()*bottom*
 */
 
-function check_answer(i, answer) {
+function check_answer(answer) {
     // if the clicked item matches the place in list "a" == "a"
     // else:  result == try again.
     var valid = correct;
@@ -182,7 +199,6 @@ function set_a_constant() {
     console.log(testing_something);
     document.getElementById("constant").style.color = 'green';
 };
-
 function test_constants() {
     set_a_constant(); //html element for this is commented out in html file
     console.log("id=question");
@@ -213,5 +229,3 @@ function start_quiz() {
 
 // load it up using a start button to set all the values.
 // that way all elements are loaded before we modify them.
-
-
