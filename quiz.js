@@ -110,6 +110,7 @@ function retrieve_JSON(i) {
         })
         .catch(err => {
             // Do something for an error here
+            console.log(err)
             console.log("JSON file is not accessable or error in data assignment.")
         })
 };
