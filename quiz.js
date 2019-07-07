@@ -11,6 +11,8 @@ let correct;        // for JSON load
 
 // document elements
 let Quiz_question;
+let quiz_box;
+let start_button;
 let answer_a;
 let answer_b;
 let answer_c;
@@ -98,6 +100,11 @@ function setDOMconstants() {
 
     current_index = 0;
     which_question = document.getElementById('which_question');
+    quiz_box = document.getElementById("quiz_box");
+    start_button = document.getElementById("start_button");
+    start_button.style.display = 'none';
+    quiz_box.style.display = 'inline-block';
+    
 
     // if we do only one question on the page, these elements don't ever need to change
     Quiz_question = document.getElementById("question");
