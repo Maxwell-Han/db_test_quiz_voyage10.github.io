@@ -89,7 +89,7 @@ function retrieve_JSON(i) {
             which_question.style.display = 'inline';
             Quiz_question.innerHTML = json_question;
             //console.log("Quiz_question=")
-            var fetchedBoxType = dict.box_type;
+            var fetchedBoxType = dict.box_type_j;
             box_type = fetchedBoxType;
             console.log(box_type);
             if (box_type == 'multiple') {
@@ -184,7 +184,7 @@ function check_answer(answer) {
 
 function set_current_answer() {
     current_answer = this.id;
-    check_answer(current_index, current_answer);
+    check_answer(current_answer);
 };
 
 
