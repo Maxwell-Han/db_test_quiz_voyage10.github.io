@@ -18,14 +18,22 @@ body {
     margin-left: 10px;
     border: 2px groove #E6EAF7;
 }
+.link-box {
+    display: inline-block;
+    height: 90vh;
+    width: 100vw;
+    padding: 5%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-.start button {
+.start {
     border-radius: 10%;
     background-color: white;
-    border: solid 2px aquamarine;
     font-size: large;
-    height: 5vh;
+    border: 5px solid #054DF9;
     width: 50vw;
+    margin: 10% 10% 10% 10%;
+    
 }
 
 button {
@@ -72,15 +80,16 @@ ul, li {
     margin: auto;
     padding-left: 20vw;
     font-size: 2em;
-    padding: 0;
     display: none;
 }
 
 .quiz_box {
+    display: none;
     background-color: #F7F7F9;
     border: 5px solid #054DF9;
     width: 95vw;
     margin-right: 10px;
+    margin-top: 10%;
 }
 
 .question_s{
