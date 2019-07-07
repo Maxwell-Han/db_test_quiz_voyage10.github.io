@@ -17,6 +17,7 @@ let answer_c;
 let answer_d;
 let answer_T;
 let answer_F;
+let box_type;
 // constants NOT from JSON, control items 
 let results;
 let current_answer;
@@ -25,7 +26,7 @@ let which_question;
 let quiz_box;
 let start_button;
 let true_false_box;
-let box_type;
+
 
 
 //removed all old functions.  Json holds our data now.
@@ -122,6 +123,7 @@ function setDOMconstants() {
     which_question = document.getElementById('which_question');
     quiz_box = document.getElementById("quiz_box");
     true_false_box = document.getElementById("true_false_box");
+    start_button = document.getElementById("start_button");
     
 
     // if we do only one question on the page, these elements don't ever need to change
