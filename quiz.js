@@ -56,6 +56,7 @@ function retrieve_JSON(i) {
             // quiz content {
             //               'question_j': 'string',   
             //               'correct_j' : 'string',
+            //               'box_type'  : 'string',
             //               'answers_j' : object{
             //                           'a': 'string',
             //                           'b': 'string',
@@ -66,6 +67,7 @@ function retrieve_JSON(i) {
             // next content (same as above)  {
             //               'question_j': 'string',   
             //               'correct_j' : 'string',
+            //               'box_type'  : 'string',
             //               'answers_j' : object{
             //                           'a': 'string',
             //                           'b': 'string',
@@ -73,6 +75,7 @@ function retrieve_JSON(i) {
             //                           'd': 'string'
             //                           }
             //               },
+            //  box_type 'TorF'  does not require answers.
         
             var dict = data[i];
             questions = data; //for check answers-- needs length of array
@@ -95,6 +98,7 @@ function retrieve_JSON(i) {
             //console.log(Quiz_question);
             var fetchedBoxType = dict.box_type;
             box_type = fetchedBoxType;
+            console.log(box_type);
             if (box_type == 'multiple') {
                 setQuizBoxType(true);
                 let options = json_answer;
