@@ -82,7 +82,14 @@ ul, li {
     font-size: 2em;
     display: none;
 }
-
+.true_false {
+    display: none;
+    background-color: #F7F7F9;
+    border: 5px solid #054DF9;
+    width: 95vw;
+    margin-right: 10px;
+    margin-top: 10%;
+}
 .quiz_box {
     display: none;
     background-color: #F7F7F9;
