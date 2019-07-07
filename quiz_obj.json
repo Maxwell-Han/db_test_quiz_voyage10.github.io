@@ -24,6 +24,17 @@
       "d": "about 5 kilos give or take."
     }
     
-  }
+  },
+  
+  {
+    "question_j": "Modern computers use electrical signals in the hardware to store and transmit data.",
+    "correct_j": "True",
+    "box_type": "TorF",
+    "answers_j": {
+      "T": "True",
+      "F": "False"
+    }
+
+  }  
   
 ]
