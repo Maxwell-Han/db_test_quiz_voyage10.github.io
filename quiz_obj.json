@@ -2,7 +2,7 @@
   {
     "question_j": "What is a boolean?",
     "correct_j": "c",
-    "box_type":  "multiple",
+    "box_type": "multiple",
     "answers_j":
     {
       "a": "True",
@@ -21,7 +21,6 @@
       "c": "They are exactly the same.",
       "d": "about 5 kilos give or take."
     }
-
   },
   {
     "question_j": "Modern computers use electrical signals in the hardware to store and transmit data.",
@@ -31,8 +30,6 @@
       "T": "True",
       "F": "False"
     }
-
   }
-
 ]
 }
