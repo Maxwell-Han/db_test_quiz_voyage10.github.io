@@ -15,6 +15,8 @@ let answer_a;
 let answer_b;
 let answer_c;
 let answer_d;
+let answer_T;
+let answer_F;
 // constants NOT from JSON, control items 
 let results;
 let current_answer;
@@ -95,7 +97,7 @@ function retrieve_JSON(i) {
             which_question.style.display = 'inline';
             Quiz_question.innerHTML = json_question;
             //console.log("Quiz_question=");
-            //console.log(Quiz_question);
+            console.log(Quiz_question);
             var fetchedBoxType = dict.box_type;
             box_type = fetchedBoxType;
             console.log(box_type);
@@ -126,6 +128,9 @@ function setDOMconstants() {
 
     current_index = 0;
     which_question = document.getElementById('which_question');
+    quiz_box = document.getElementById("quiz_box");
+    true_false_box = document.getElementById("true_false_box");
+    
 
     // if we do only one question on the page, these elements don't ever need to change
     Quiz_question = document.getElementById("question");
@@ -133,6 +138,8 @@ function setDOMconstants() {
     answer_b = document.getElementById("answerB");
     answer_c = document.getElementById("answerC");
     answer_d = document.getElementById("answerD");
+    answer_T = document.getElementById("True");  // needed?
+    answer_F = document.getElementById("False");  // needed?
     results = document.getElementById("results");
 };
 
