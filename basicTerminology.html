@@ -5,68 +5,77 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="quiz.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="quiz.css" />
     <title>Basic Terminology</title>
 </head>
 <body>
-    <button class="start" id="start_button" onclick="start_quiz()"> Begin </button>
-    <div class="line"></div>
-    <div class="results" id="results">results div</div>
-    <div class="line"></div>
+    <div class="Instructions" id="instructions">
+    <p>Test and learn some basic terminology. <br> Click Start Quiz to begin. <br /></p>
+    <button class="start" id="start_button" onclick="start_quiz()"> Start Quiz </button>
+    </div>
+    <main>
 
-    <h3 class="which_question" id="which_question"></h3>
-    <div class="line"></div>
-    <h2 class="question" id="question"></h2>
-   
-    <div class="quiz_box" id="quiz_box">
+        <img class="basic_term" id="image1"src="dark-blue-keyboard-by-Marta-Pexels.jpg" alt="close up of dark blue themed keyboard" />
+
+
         <div class="results" id="results">results div</div>
-        <img alt="loading next question img" id="load_image" />
-        <div class="question_s">
-           
-            <ul>
-                <button type="button" class="quiz_answers" id="a">A</button>
-                <li id="answerA">testing A</li>
 
+
+        <h3 class="which_question" id="which_question"></h3>
+        <div class="line"></div>
+        <h2 class="question" id="question"></h2>
+
+        <div class="quiz_box" id="quiz_box">
+            <div class="results" id="results">results div</div>
+            <img alt="loading next question img" id="load_image" />
+            <div class="question_s">
+
+                <ul>
+                    <button type="button" class="quiz_answers" id="a">A</button>
+                    <li id="answerA">testing A</li>
+
+                </ul>
+                <div class="line"></div>
+
+                <ul>
+                    <button type="button" class="quiz_answers" id="b">B</button>
+                    <li id="answerB">testing B</li>
+
+                </ul>
+                <div class="line"></div>
+                <ul>
+                    <button type="button" class="quiz_answers" id="c">C</button>
+                    <li id="answerC">testing C</li>
+
+                </ul>
+                <div class="line"></div>
+                <ul>
+                    <button type="button" class="quiz_answers" id="d">D</button>
+                    <li id="answerD">testing D</li>
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="true_false" id="true_false_box">
+
+            <ul>
+
+                <button type="button" class="quiz_answers" id="True">T</button>
+                <li id="True"> True </li>
             </ul>
             <div class="line"></div>
-
             <ul>
-                <button type="button" class="quiz_answers" id="b">B</button>
-                <li id="answerB">testing B</li>
 
+                <button type="button" class="quiz_answers" id="False">F</button>
+                <li id="False"> False </li>
             </ul>
-            <div class="line"></div>
-            <ul>
-                <button type="button" class="quiz_answers" id="c">C</button>
-                <li id="answerC">testing C</li>
 
-            </ul>
-            <div class="line"></div>
-            <ul>
-                <button type="button" class="quiz_answers" id="d">D</button>
-                <li id="answerD">testing D</li>
 
-            </ul>
 
         </div>
-    </div>
-    <div class="true_false" id="true_false_box">
-
-        <ul>
-
-            <button type="button" class="quiz_answers" id="True">T</button>
-            <li id="True"> True </li>
-        </ul>
-        <div class="line"></div>
-        <ul>
-
-            <button type="button" class="quiz_answers" id="False">F</button>
-            <li id="False"> False </li>
-        </ul>
-
-
-
-    </div>
+    </main>
 
 </body>
 </html>
