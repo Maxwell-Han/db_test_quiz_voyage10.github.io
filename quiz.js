@@ -149,9 +149,9 @@ function setDOMconstants() {
     hide_element(start_button);
     hide_element(image1_display);
     hide_element(instructions);   // maybe move end elements and start elements to entire function?
-    hide_element(congrats);
-    hide_element(image2_display);
-    show_element(quiz_box);
+    //hide_element(congrats);
+    //hide_element(image2_display);
+    //show_element(quiz_box);
     
 };
 
