@@ -24,8 +24,12 @@ let current_answer;
 let current_index;
 let which_question;
 let quiz_box;
-let start_button;
 let true_false_box;
+//items to hide on start of quiz ----
+let image1_display; // ---------new-------
+let start_button;
+let instructions;
+
 
 
 
@@ -124,6 +128,8 @@ function setDOMconstants() {
     quiz_box = document.getElementById("quiz_box");
     true_false_box = document.getElementById("true_false_box");
     start_button = document.getElementById("start_button");
+    image1_display = document.getElementById("image1");
+    instructions = document.getElementById("instructions");
     
 
     // if we do only one question on the page, these elements don't ever need to change
@@ -135,8 +141,14 @@ function setDOMconstants() {
     answer_T = document.getElementById("True");  // needed?
     answer_F = document.getElementById("False");  // needed?
     results = document.getElementById("results");
-    start_button.style.display = 'none';
+    hide_element(start_button);
+    hide_element(image1_display);
+    hide_element(instructions);
 };
+
+function hide_element(element) {
+    element.style.display = 'none';
+}
 
 function loadCurrentQuestion(i) {
     retrieve_JSON(i);    
@@ -154,8 +166,7 @@ function setQuizBoxType(multiple) {
     }
 };
 /*   
- *   end JSON  functions.  
- *  to switch back to old set,  just change the load_quiz type in start_quiz()*bottom*
+ *   end JSON  functions. 
 */
 
 function check_answer(answer) {
@@ -233,10 +244,8 @@ function test_constants() {
 
 function start_quiz() {
     // set our constants now that page is loaded:
-    addEventHandlersToButtons()
-    
+    addEventHandlersToButtons()    
     //updatePageWithNewElements()
-    //set_constants();   
     setDOMconstants();
     loadCurrentQuestion(current_index);
    
