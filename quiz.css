@@ -135,3 +135,22 @@ ul, li {
     display: none;
     color: cornflowerblue;
 }
+
+.end_quiz {
+    display: none;
+    width: 100vw;
+    height: 80vh;
+    padding: 5px;
+    margin-top: auto;
+}
+
+.hidden_congrats {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    color: indigo;
+    font-size: 2em;
+}
