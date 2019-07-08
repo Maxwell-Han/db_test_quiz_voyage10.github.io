@@ -2,7 +2,7 @@
   {
     "question_j": "What is a boolean?",
     "correct_j": "c",
-    "box_type":  "multiple",
+    "box_type_j":  "multiple",
     "answers_j":
     {
       "a": "True",
@@ -14,7 +14,7 @@
   {
     "question_j": "What makes a parameter different from an arguement?",
     "correct_j": "b",
-    "box_type": "multiple",
+    "box_type_j": "multiple",
     "answers_j": {
       "a": "A parameter keeps the chickens from escaping. Arguements make them angry.",
       "b": "The context. A parameter is a placeholder, the arguement is the thing that occupies that place.",
@@ -26,7 +26,7 @@
   {
     "question_j": "Modern computers use electrical signals in the hardware to store and transmit data.",
     "correct_j": "True",
-    "box_type": "TorF",
+    "box_type_j": "TorF",
     "answers_j": {
       "T": "True",
       "F": "False"
@@ -36,7 +36,7 @@
   {
     "question_j": "A files 'extenstion' is the type of file the computer reads it as.  A .txt file is also known as:",
     "correct_j": "d",
-    "box_type": "multiple",
+    "box_type_j": "multiple",
     "answers_j": {
       "a": "a text file",
       "b": "plain text file",
