@@ -20,6 +20,7 @@ body {
     margin-left: 10px;
     border: 2px groove #E6EAF7;
 }
+
 .link-box {
     display: inline-block;
     height: 90vh;
@@ -50,18 +51,18 @@ button {
     border: solid 2px aquamarine;
     font-size: large;
 }
+
     button:hover {
         background-color: #E4E7F2;
     }
 
 .title-head {
-
     text-align: center;
     background: #D6F5FD;
-    border-bottom: 2px groove blue; 
+    border-bottom: 2px groove blue;
 }
 
-.center-justify p{
+.center-justify p {
     text-align: center;
     justify-content: space-around;
 }
@@ -72,6 +73,7 @@ ul, li {
     display: inline-block;
     padding-left: 5vw;
 }
+
 .Instructions {
     display: inline-block;
     align-items: center;
@@ -82,17 +84,20 @@ ul, li {
     color: indigo;
     font-size: 2em;
 }
-#load_image{
+
+#load_image {
     display: none;
 }
-.results{
-    color:midnightblue;
+
+.results {
+    color: midnightblue;
     text-align: center;
     margin: auto;
     padding-left: 20vw;
     font-size: 2em;
     display: none;
 }
+
 .true_false {
     display: none;
     background-color: #F7F7F9;
@@ -101,6 +106,7 @@ ul, li {
     margin-right: 10px;
     margin-top: 10%;
 }
+
 .quiz_box {
     display: none;
     background-color: #F7F7F9;
@@ -110,22 +116,22 @@ ul, li {
     margin-top: 10%;
 }
 
-.question_s{
+.question_s {
     border: none;
     display: inline-block;
     font-size: large;
     color: black;
 }
-.question{
-    display:inline;
+
+.question {
+    display: inline;
     border: none;
     font-size: 2em;
     color: cornflowerblue;
     padding-left: 5vw;
 }
-.which_question{
+
+.which_question {
     display: none;
     color: cornflowerblue;
 }
-
-
