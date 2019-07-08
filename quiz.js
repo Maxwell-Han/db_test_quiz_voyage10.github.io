@@ -156,6 +156,7 @@ function setDOMconstants() {
 };
 
 function hide_element(element) {
+    console.log(element);
     element.style.display = 'none';
 }
 
