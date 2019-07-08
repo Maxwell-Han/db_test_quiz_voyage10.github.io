@@ -99,7 +99,7 @@ function retrieve_JSON(i) {
             var fetchedBoxType = dict.box_type_j;
             box_type = fetchedBoxType;
             console.log(box_type);
-            if (box_type == 'multiple') {
+            if (box_type == "multiple") {
                 setQuizBoxType(true);
                 let options = json_answer;
                 //console.log("options = ", options);
