@@ -1,13 +1,19 @@
 // JavaScript source code for QuizMockV10
 let testing_something; // for 'set_a_constant'() test
 
-//  Quiz elements to be written to DOM
+// get quiz questions from firebase
 
-var questions;  // used for length of JSON array
+db.collection('terminology').get().then( (snapshot) => {
+  snapshot.docs.forEach(doc => {
+    questions.push(doc.data())
+  })
+})
+
+//  Quiz elements to be written to DOM
+var questions = [];  // used for length of JSON array
 var json_question;  // for JSON load
 let json_answer;    // for JSON load
 let correct;        // for JSON load
-
 
 // document elements
 let Quiz_question;
@@ -18,7 +24,7 @@ let answer_d;
 let answer_T;
 let answer_F;
 let box_type;
-// constants NOT from JSON, control items 
+// constants NOT from JSON, control items
 let results;
 let current_answer;
 let current_index;
@@ -32,99 +38,46 @@ let instructions;
 let image2_display; //--new------------------
 let congrats;
 
-
-
-
-//removed all old functions.  Json holds our data now.
-
-
+// Make call to Firebase and set questions into an array
+//
 function retrieve_JSON(i) {
-    
-    
-    return fetch('quiz_obj.json')
-        .then(response => {
-            console.log("getting json response...")
-            return response.json()
-        })
-        .then(data => {
-            console.log("Assigning data to constants")
-            // Work with JSON data here
-            // had to add a _j  at the end of my content
-            // because of variables declared above, these must be different
-            //----------------------------------------//
-            //          data format:                  
-            // array:[
-            // quiz content {
-            //               'question_j': 'string',   
-            //               'correct_j' : 'string',
-            //               'box_type'  : 'string',
-            //               'answers_j' : object{
-            //                           'a': 'string',
-            //                           'b': 'string',
-            //                           'c': 'string',
-            //                           'd': 'string'
-            //                           }
-            //               },
-            // next content (same as above)  {
-            //               'question_j': 'string',   
-            //               'correct_j' : 'string',
-            //               'box_type'  : 'string',
-            //               'answers_j' : object{
-            //                           'a': 'string',
-            //                           'b': 'string',
-            //                           'c': 'string',
-            //                           'd': 'string'
-            //                           }
-            //               },
-            //  box_type 'TorF'  does not require answers.
-        
-            var dict = data[i];
-            questions = data; //for check answers-- needs length of array
-            //console.log(dict);
-            var fetchedQuestion = dict.question_j;
-            json_question = fetchedQuestion;
-            console.log(fetchedQuestion);
-            var fetchedCorrect = dict.correct_j;
-            correct = fetchedCorrect;
-            //console.log(fetchedCorrect);
-            var fetchedAnswer = dict.answers_j;
-            //console.log(fetchedAnswer)
-            json_answer = fetchedAnswer;
-            var ques_num = i + 1;
-            var message = "Question number:  " + " " + ques_num;
-            which_question.innerHTML = message;
-            which_question.style.display = 'inline';
-            Quiz_question.innerHTML = json_question;
-            //console.log("Quiz_question=")
-            var fetchedBoxType = dict.box_type_j;
-            box_type = fetchedBoxType;
-            console.log(box_type);
-            if (box_type == "multiple") {
-                setQuizBoxType(true);
-                let options = json_answer;
-                //console.log("options = ", options);
-                answer_a.innerHTML = options.a;
-                answer_b.innerHTML = options.b;
-                answer_c.innerHTML = options.c;
-                answer_d.innerHTML = options.d;
-            }
-            else {
-                setQuizBoxType(false);                
-            }
-            
-            
-            
-        })
-        .catch(err => {
-            // Do something for an error here
-            console.log(err)
-            console.log("JSON file is not accessable or error in data assignment.")
-        })
+    // return fetch('https://nelliesnoodles.github.io/test_quiz_voyage10.github.io/quiz_obj.json')
+    //     .then(response => {
+    //         console.log("getting json response...")
+    //         return response.json()
+    //     })
+    console.log("Assigning data to constants")
+      var dict = questions[i];
+      var fetchedQuestion = dict.question; //set question text
+      json_question = fetchedQuestion;
+      var fetchedCorrect = dict.answer; //set correct answer value
+      correct = fetchedCorrect; // set the correct answer value
+      var fetchedAnswer = dict.choices;
+      json_answer = fetchedAnswer;
+      //for question number display
+      var ques_num = i + 1;
+      var message = "Question number:  " + " " + ques_num;
+      which_question.innerHTML = message;
+      which_question.style.display = 'inline';
+      Quiz_question.innerHTML = json_question;
+
+      var fetchedBoxType = dict.qType;
+      box_type = fetchedBoxType;
+      if (box_type == "multiple") {
+          setQuizBoxType(true);
+          let options = json_answer;
+          //console.log("options = ", options);
+          answer_a.innerHTML = options[0];
+          answer_b.innerHTML = options[1];
+          answer_c.innerHTML = options[2];
+          answer_d.innerHTML = options[3];
+      }
+      else {
+          setQuizBoxType(false);
+      }
 };
 
 function setDOMconstants() {
-    
-
     current_index = 0;
     which_question = document.getElementById('which_question');
     quiz_box = document.getElementById("quiz_box");
@@ -134,8 +87,6 @@ function setDOMconstants() {
     instructions = document.getElementById("instructions");
     image2_display = document.getElementById("image2");
     congrats = document.getElementById("congrats"); //starts at display: none
-    
-    
 
     // if we do only one question on the page, these elements don't ever need to change
     Quiz_question = document.getElementById("question");
@@ -152,7 +103,7 @@ function setDOMconstants() {
     hide_element(congrats);
     hide_element(image2_display);
     show_element(quiz_box);
-    
+
 };
 
 function hide_element(element) {
@@ -166,7 +117,7 @@ function show_element(element) {
 }
 
 function loadCurrentQuestion(i) {
-    retrieve_JSON(i);    
+    retrieve_JSON(i);
 };
 
 
@@ -180,8 +131,8 @@ function setQuizBoxType(multiple) {
         true_false_box.style.display = 'inline-block';
     }
 };
-/*   
- *   end JSON  functions. 
+/*
+ *   end JSON  functions.
 */
 
 function check_answer(answer) {
@@ -196,10 +147,8 @@ function check_answer(answer) {
         results.style.display = 'inline';
         results.innerHTML = 'Fantastic!';
         current_index += 1;
-        
         //move on to next question  i = i+1 load_quiz(i)
         if (current_index < questions.length) {
-            
             //load_quiz(current_index);
             loadCurrentQuestion(current_index);
         }
@@ -223,7 +172,8 @@ function check_answer(answer) {
 
 
 function set_current_answer() {
-    current_answer = this.id;
+    current_answer = this.nextElementSibling.textContent;
+    console.log('Just clicked button.  our answer is ', current_answer)
     check_answer(current_answer);
 };
 
@@ -236,14 +186,14 @@ function addEventHandlersToButtons() {
     for (let i = 0; i < choices.length; i++) {
         let element = choices[i];
         //let answer = element.id;
-        
+
         //console.log(answer);
         element.addEventListener("click", set_current_answer);
-        
+
     };
 };
 
-/*   test functions: 
+/*   test functions:
 * test our constants have been loaded
  *
 function set_a_constant() {
@@ -269,11 +219,12 @@ function test_constants() {
 
 function start_quiz() {
     // set our constants now that page is loaded:
-    addEventHandlersToButtons()    
+    addEventHandlersToButtons()
+
     //updatePageWithNewElements()
     setDOMconstants();
     loadCurrentQuestion(current_index);
-   
+
     //test *since button can only be clicked after screen load, these constants should exist (not null):
     //test_constants()
 };
