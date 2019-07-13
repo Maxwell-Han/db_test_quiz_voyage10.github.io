@@ -1,9 +1,15 @@
-﻿/* css for QuizMockV10 
+﻿/* css for QuizMockV10
     *colors are set so I can make sure the css is working
     * remember to be careful with variations that use a lot of green/yellow orange/yellow.
     * color blind have trouble with yellow most.  So if yellow is predominant in a background,
     * and in a font color, it will make it hard to read... I need to look into it more.
 */
+
+.messages-container {
+  display: none;
+  justify-content: center;
+}
+
 #constant {
     color: red;
 }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Code Quiz</title>
+    <!--  bootstrap not used atm
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        -->
+    <link rel="stylesheet" href="../quiz.css" />
+    <link rel="stylesheet" href="../quiz_auth.css" />
+</head>
+<body>
+  <div class="title-head">
+    <h2>Log In</h2>
+  </div>
+  <form id="login-form">
+    <div class="input-field">
+      <input type="email" id="login-email" required />
+      <label for="login-email">Email address</label>
+    </div>
+    <div class="input-field">
+      <input type="password" id="login-password" required />
+      <label for="login-password">Your password</label>
+    </div>
+    <button class"login-button">Login</button>
+  </form>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-functions.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+  <script>
+  // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyBnSrtsjCgqOwFSIX9CPaJR1RkYUjjOuRo",
+          authDomain: "voyage10-geckos01-quizapp.firebaseapp.com",
+          databaseURL: "https://voyage10-geckos01-quizapp.firebaseio.com",
+          projectId: "voyage10-geckos01-quizapp",
+          // storageBucket: "",
+          // messagingSenderId: "251031078443",
+          appId: "1:251031078443:web:e6d99c1e8e0489df"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        //make auth and firestore references
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const functions = firebase.functions();
+        auth.onAuthStateChanged( user => {
+          if(user) {
+            if(window.location !== "../quiz.html") {
+              window.location = "../quiz.html"
+            }
+            user.getIdTokenResult().then(idTokenResult => {
+              console.log(user)
+              user.admin = idTokenResult.claims.admin
+              // do something if user is admin
+            })
+            // console.log('user logged in: ', user)
+            // //get data
+            // db.collection('terminology')
+            //   .onSnapshot( (snapshot) => {
+            //     setupQuestions(snapshot.docs)
+            // }, err => {
+            //   console.log(err.message)
+            // })
+          } else {
+            console.log('Auth State: user currently logged out')
+            // do something like hide elements if user is logged out
+          }
+        })
+  </script>
+  <script type="text/javascript" src="../auth.js"></script>
+</body>
+</html>
