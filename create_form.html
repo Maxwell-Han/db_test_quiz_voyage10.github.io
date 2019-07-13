@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Code Quiz</title>
+    <!--  bootstrap not used atm
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        -->
+    <!-- <link rel="stylesheet" href="../quiz.css" />
+    <link rel="stylesheet" href="../quiz_auth.css" /> -->
+</head>
+<body>
+  <div class="title-head">
+    <h2>Create a Question</h2>
+  </div>
+  <form id="create-form">
+    <div class="input-field">
+      <label for="question-category">Question Category</label>
+      <input type="category" id="question-category" required />
+    </div>
+    <div class="select-field">
+      <select name="choices" id="question-type"/>
+        <option value="multiple">Multiple Choice</option>
+        <option value="TorF">True or False</option>
+      </select>
+    </div>
+    <div class="input-field">
+      <label for="question">Question Text</label>
+      <input type="text" id="question" required />
+    </div>
+    <h5>Enter answer choices</h5>
+    <div class="input-field">
+      <label for="choice">Choice 1</label>
+      <input type="text" id="choice1" required />
+    </div>
+    <div class="input-field">
+      <label for="choice">Choice 2</label>
+      <input type="text" id="choice2" required />
+    </div>
+    <div class="input-field">
+      <label for="choice">Choice 3</label>
+      <input type="text" id="choice3" required />
+    </div>
+    <div class="input-field">
+      <label for="choice">Choice 4</label>
+      <input type="text" id="choice4" required />
+    </div>
+    <h5>The correct answer is<h5>
+      <div class="select-field">
+        <select name="correct-choice" id="answer"/>
+          <option value="choice1">Answer 1</option>
+          <option value="choice2">Answer 2</option>
+          <option value="choice3">Answer 3</option>
+          <option value="choice4">Answer 4</option>
+        </select>
+      </div>
+    <button class"login-button">Create Question</button>
+  </form>
+  <h2 style="display: none;" class="success-message">Question Added!</h2>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-functions.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+  <script>
+  // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyBnSrtsjCgqOwFSIX9CPaJR1RkYUjjOuRo",
+          authDomain: "voyage10-geckos01-quizapp.firebaseapp.com",
+          databaseURL: "https://voyage10-geckos01-quizapp.firebaseio.com",
+          projectId: "voyage10-geckos01-quizapp",
+          // storageBucket: "",
+          // messagingSenderId: "251031078443",
+          appId: "1:251031078443:web:e6d99c1e8e0489df"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        //make auth and firestore references
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const functions = firebase.functions();
+  </script>
+  <script type="text/javascript" src="static/scripts/create.js"></script>
+</body>
+</html>
