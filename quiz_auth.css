@@ -1,9 +1,0 @@
-
-.auth-container {
-  border: 1px groove blue;
-
-  margin: 2vh auto;
-  display: flex;
-  width: 50vw;
-  justify-content: space-around;
-}
