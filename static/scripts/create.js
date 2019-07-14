@@ -21,7 +21,7 @@ createForm.addEventListener('submit', (e) => {
     .then( () => {
       createForm.reset()
       document.querySelector('.success-message').style.display = "inline-block"
-      window.location = "quiz.html"
+      window.location = "index.html"
     })
     .catch( err => console.log(err.message))
 })

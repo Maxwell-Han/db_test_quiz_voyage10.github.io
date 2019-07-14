@@ -54,7 +54,7 @@ if(document.querySelector('#login-form')) {
     auth.signInWithEmailAndPassword(email, password)
       .then( (credential) => {
         console.log('success!')
-
+        window.location = "../index.html"
       })
       .catch( err => console.log(err.message))
   })
@@ -82,7 +82,7 @@ if(document.querySelector('#signup-form')) {
       })
       .then( (credential) => {
         console.log(credential)
-        window.location = "../quiz.html"
+        window.location = "../index.html"
     })
   })
 }
