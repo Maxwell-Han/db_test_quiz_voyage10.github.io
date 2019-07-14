@@ -57,8 +57,8 @@
         const functions = firebase.functions();
         auth.onAuthStateChanged( user => {
           if(user) {
-            if(window.location !== "../quiz.html") {
-              window.location = "../quiz.html"
+            if(window.location !== "../index.html") {
+              window.location = "../index.html"
             }
             user.getIdTokenResult().then(idTokenResult => {
               console.log(user)
