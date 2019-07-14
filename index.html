@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +9,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         -->
     <link rel="stylesheet" href="static/stylesheets/quiz.css" />
+    <link rel="stylesheet" href="static/stylesheets/quiz_auth.css" />
 </head>
 <body>
     <div class="title-head">
         <h2>Let's make it Stick.</h2>
+    </div>
+    <div class="messages-container">
+      <div class="logged-in-message">Welcome</div>
+    </div>
+    <div class="auth-container">
+      <a href="auth_html/signup.html" class="new-user">
+        <button>New User</button>
+      </a>
+      <a href="auth_html/login.html" class="login">
+        <button>Login</button>
+      </a>
+      <div class="logout">
+        <button class="logout-button">Logout</button>
+      </div>
     </div>
 
     <div class="Instructions">
@@ -22,17 +37,52 @@
             and get useful tools to help make it stick.<br />
         </p>
     </div>
+    <div class="get-started-container">
+      <button class="get-started-button">Get Started</button>
+    </div>
     <div class="link-box">
-    <h3>  Choose your catagory:</h3>
-    <div class="line"></div>
-    <h4><a href="basicTerminology.html">Basic Terminology</a></h4>
-    <!-- add link when scripts written-->
-    <h4>Arrays, lists and things those silly strings.</h4>
-    <h4>Lets get Technical, but not too much.</h4>
-    <h4>Data Structures, where did I put that Tupperware?</h4>
-    <h4>What's this do?</h4>
-    <h4>I'm bored. Let's break things</h4>
-        </div>
+      <h3>  Choose your catagory:</h3>
+      <div class="line"></div>
+      <h4><a href="basicTerminology.html">Basic Terminology</a></h4>
+      <!-- add link when scripts written-->
+      <h4>Arrays, lists and things those silly strings.</h4>
+      <h4>Lets get Technical, but not too much.</h4>
+      <h4>Data Structures, where did I put that Tupperware?</h4>
+      <h4>What's this do?</h4>
+      <h4>I'm bored. Let's break things</h4>
+      <a href="create_form.html">
+        <button class="create-form">Create Your Own Questions</button>
+      </a>
+    </div>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-functions.js"></script>
 
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+  https://firebase.google.com/docs/web/setup#config-web-app -->
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+    apiKey: "AIzaSyBnSrtsjCgqOwFSIX9CPaJR1RkYUjjOuRo",
+    authDomain: "voyage10-geckos01-quizapp.firebaseapp.com",
+    databaseURL: "https://voyage10-geckos01-quizapp.firebaseio.com",
+    projectId: "voyage10-geckos01-quizapp",
+    // storageBucket: "",
+    // messagingSenderId: "251031078443",
+    appId: "1:251031078443:web:e6d99c1e8e0489df"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    //make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const functions = firebase.functions();
+  </script>
+  <script type="text/javascript" src="static/scripts/auth.js"></script>
+  <script type="text/javascript" src="static/scripts/quiz_page_actions.js"></script>
 </body>
 </html>
