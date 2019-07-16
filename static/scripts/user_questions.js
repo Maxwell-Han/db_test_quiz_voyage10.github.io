@@ -16,7 +16,22 @@ const setupQuestions = (data) => {
       html += li
       })
       questionItemsContainer.innerHTML = html
+      var deleteButtons = document.querySelectorAll('.delete')
+      for(let i = 0; i < deleteButtons.length; i++) {
+        let button = deleteButtons[i]
+        setDeleteHandler(button)
+      }
     }
+}
+
+const setDeleteHandler = (button) => {
+  let parent = button.parentElement
+  button.addEventListener('click', (e) => {
+    e.preventDefault()
+    console.log('we are deleting a question')
+    db.collection('users').doc(auth.currentUser.uid).collection('questions')
+      .doc(parent.id).delete()
+  })
 }
 
 const grabQuestions = () => {

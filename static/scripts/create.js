@@ -13,10 +13,11 @@ createForm.addEventListener('submit', (e) => {
       createForm['choice3'].value,
       createForm['choice4'].value
     ],
+    qTopic: category,
     answer: createForm[createForm['answer'].value].value
   }
   console.log(data)
-  db.collection('users').doc(auth.currentUser.uid).collection(category)
+  db.collection('users').doc(auth.currentUser.uid).collection('questions')
     .add(data)
     .then( () => {
       createForm.reset()
