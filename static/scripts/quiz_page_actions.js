@@ -11,6 +11,8 @@ const displayWelcome = () => {
   }
 }
 
+
+
 window.addEventListener('load', (e) => {
   setTimeout( () => {
     console.log('we are running the timer')

@@ -1,0 +1,19 @@
+
+.topics-container {
+  display: flex;
+  justify-content: space-around;
+  width: 70vw;
+}
+
+.q-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  width: 55vw;
+  margin: 0 auto;
+}
+
+.q-item button {
+  background-color: aliceblue;
+  width: 10vw;
+  border-radius: 4px;
+}
